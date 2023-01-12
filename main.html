@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+	    <title></title>
+	    <style>
+			body{
+				padding: 0;
+				margin: 0;
+			}
+	    </style>
+	</head>
+
+	<body>
+        <div id = "TinyMCE"></div>
+	</body>
+
+    <script type="text/javascript" src="./tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="./tinymce/zh_CN.js"></script>
+	<script type="text/javascript">
+        tinymce.init({
+            selector: '#TinyMCE',
+            language: 'zh_CN',
+            height: 'calc(100vh)',
+            plugins:'link,image,charmap,paste,print,preview,hr,anchor,pagebreak,spellchecker,searchreplace,visualblocks,visualchars,code,fullscreen,insertdatetime,media,nonbreaking,table,autosave,fullpage,toc,',
+            toolbar: [
+                'bold | italic | underline | strikethrough | alignleft | aligncenter | alignright | alignjustify | alignnone | styleselect | formatselect | fontselect | fontsizeselect | cut | copy | paste | outdent | indent | blockquote | undo | redo | removeformat | subscript | superscript | visualaid | insert'
+            ]
+        }); 
+	</script>
+
+</html>
