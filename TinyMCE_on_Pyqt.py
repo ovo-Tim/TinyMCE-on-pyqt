@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 import sys
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-from PyQt5.QtWebEngineWidgets import *
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from PySide6.QtWebEngineWidgets import *
 
 
 class TinyMCE_on_PyQt_window(QWidget):
@@ -18,5 +17,4 @@ class TinyMCE_on_PyQt_window(QWidget):
         self.browser=QWebEngineView()
         self.url=self.html_path+self.html_file
         self.browser.load(QUrl(self.url))
-        self.setCentralWidget(self.browser) 
         
