@@ -27,5 +27,6 @@ class my_TinyMCE(editor.TinyMCE_on_PyQt_window):
 app=QApplication(sys.argv)
 apply_stylesheet(app, theme='dark_teal.xml')
 win=my_TinyMCE()
+win.init()
 win.show()
 app.exit(app.exec())
