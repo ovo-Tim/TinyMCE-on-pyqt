@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import sys
+import sys,os
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
@@ -10,12 +10,10 @@ class TinyMCE_on_PyQt_window(QWidget):
         super(TinyMCE_on_PyQt_window, self).__init__()
 
         # 创建浏览器控件
-        self.html_path="."
-        self.html_file="/main.html"
-        self.browser=QWebEngineView()
-        self.url=self.html_path+self.html_file
-        # print(self.url)
-        self.browser.load(QUrl("http://baidu.com"))
+        self.browser = QWebEngineView()
+        self.url = QFileInfo("./main.html").absoluteFilePath()
+        print(self.url)
+        self.browser.load(QUrl("file://"+self.url))
         
         # 设置QWidget的layout
         self.layout = QVBoxLayout()
