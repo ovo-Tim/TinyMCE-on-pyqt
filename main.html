@@ -18,15 +18,14 @@
 	<script type="text/javascript" src="/qwebchannel.js"></script>  
     <script type="text/javascript" src="./tinymce/js/tinymce/tinymce.min.js"></script>
     <script src="./tinymce/zh_CN.js"></script>
-	<script src="qwebchannel.js"></script>
 	<script type="text/javascript">
-		//初始化TinyMCE(将方法挂载到window便于从webengineview访问)
-		window.init = function (config) {
-			alert("start");
+		//初始化TinyMCE
+		 function init_editor(config) {
+			//alert("start");
 			tinymce.init(JSON.parse(config));  //把python发来的json转成js对象，并初始化
 		}
 
-		//获取内容(将方法挂载到window便于从webengineview访问)
+		//获取内容
 		window.get_html = function (msg) {
 			
 		}

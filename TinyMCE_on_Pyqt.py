@@ -4,6 +4,7 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from PySide6.QtWebEngineWidgets import *
+from PySide6.QtWebChannel import *
 
 import json
 
@@ -26,12 +27,20 @@ class TinyMCE_on_PyQt_window(QWidget):
         self.browser = QWebEngineView()
         self.browser.load(QUrl("file://"+self.url))
 
-        #初始化TinyMCE(调用JS)
-        self.browser.page().runJavaScript("window.init('%s')" % self.TinyMCE_config)
+        # 新建QWebChannel
+        self.channel = QWebChannel()
+        self.browser.page().setWebChannel(self.channel)
+
+        self.browser.page().loadFinished.connect(self.init_TinyMCE)
         
         # 设置QWidget的layout
         self.layout.addWidget(self.browser)
         self.setLayout(self.layout)
+
+    def init_TinyMCE(self):
+        #初始化TinyMCE(调用JS)
+        self.browser.page().runJavaScript("init_editor('%s');" % self.TinyMCE_config)
+        
         
     def get_file(self):
         pass
