@@ -58,7 +58,7 @@ class TinyMCE_on_PyQt_window(QWidget):
         self.browser.page().runJavaScript("tinymce.activeEditor.getContent();",0,self.__call_back)
     
     # 当newest为True时，进程将堵塞等待刷新完成
-    def get_file(self,newest=True):
+    def get_file(self):
         self.refresh_content() #开始刷新内容
         logging.info("开始堵塞，等待刷新完成")
         while not self.refresh_state: # 当内容没有刷新完成时进行堵塞

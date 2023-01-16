@@ -23,7 +23,7 @@ class my_TinyMCE(editor.TinyMCE_on_PyQt_window):
 
     def choose_file(self):
         file_url = QFileDialog.getSaveFileName(self, 
-              "设置报错位置","./",
+              "设置保存位置","./",
               "All Files (*);;Text Files (*.html)")[0]
 
         self.save_file(file_url)
