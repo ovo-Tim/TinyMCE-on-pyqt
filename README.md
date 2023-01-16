@@ -6,7 +6,7 @@
 - ✅ 加载大量插件
 - ✅ 支持图片
 - ✅ 由Python控制配置
+- ✅ 由Python控制保存位置
+- ✅ Python端控制TinyMCE配置
 ### 待实现
-- ❎ 由Python控制保存位置
 - ❎ 打包成Python库，并发布到PyPi
-- ❎ Python端控制TinyMCE配置

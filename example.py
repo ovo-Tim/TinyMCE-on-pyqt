@@ -13,13 +13,20 @@ class my_TinyMCE(editor.TinyMCE_on_PyQt_window):
         super(my_TinyMCE, self).__init__()
         # 添加保存按钮
         self.save_button = QPushButton("保存文件",self)
-        self.save_button.clicked.connect(self.save_file)
+        self.save_button.clicked.connect(self.choose_file)
         self.layout.addWidget(self.save_button)
 
     # 监听键盘
     def keyPressEvent(self, event):
         if QApplication.keyboardModifiers() == Qt.ControlModifier and event.key() == Qt.Key_S: #检测CtrlS保存按键
-            self.save_file()
+            self.choose_file()
+
+    def choose_file(self):
+        file_url = QFileDialog.getSaveFileName(self, 
+              "设置报错位置","./",
+              "All Files (*);;Text Files (*.html)")[0]
+
+        self.save_file(file_url)
             
 
 
