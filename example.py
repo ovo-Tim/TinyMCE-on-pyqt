@@ -14,7 +14,10 @@ class my_TinyMCE(editor.TinyMCE_on_PyQt_window):
         # 添加保存按钮
         self.save_button = QPushButton("保存文件",self)
         self.save_button.clicked.connect(self.choose_file)
+        self.open_button = QPushButton("打开文件",self)
+        self.open_button.clicked.connect(self.open_file)
         self.layout.addWidget(self.save_button)
+        self.layout.addWidget(self.open_button)
 
     # 监听键盘
     def keyPressEvent(self, event):
@@ -25,9 +28,15 @@ class my_TinyMCE(editor.TinyMCE_on_PyQt_window):
         file_url = QFileDialog.getSaveFileName(self, 
               "设置保存位置","./",
               "All Files (*);;Text Files (*.html)")[0]
-
         self.save_file(file_url)
-            
+
+    def open_file(self):
+        file_url = QFileDialog.getOpenFileName(self, 
+              "选择打开位置","./",
+              "All Files (*);;Text Files (*.html)")[0]
+        print(file_url)
+        with open(file_url, mode='r', encoding='utf-8') as file_obj:
+            self.set_html(file_obj.read())
 
 
 

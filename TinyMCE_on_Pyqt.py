@@ -72,3 +72,6 @@ class TinyMCE_on_PyQt_window(QWidget):
                 file_obj.write(self.get_file())
             else:
                 file_obj.write(self.content)
+
+    def set_html(self,html_code):
+        self.browser.page().runJavaScript("tinymce.activeEditor.setContent('%s');" % html_code)

@@ -8,6 +8,7 @@
 - ✅ 由Python控制配置
 - ✅ 由Python控制保存位置
 - ✅ Python端控制TinyMCE配置
+- ✅ 打开html文件
 ### 待实现
 - ❎ 打包成Python库，并发布到PyPi
 
@@ -94,6 +95,20 @@ while not self.refresh_state: # 当内容没有刷新完成时进行堵塞
 ```
 #### 保存文件
 `save_file(路径,是否刷新文件确保最新)`
+
+### 设置内容
+#### 设置html
+`set_html(html代码)`
+#### 打开文件
+``` python
+def open_file(self):
+    file_url = QFileDialog.getOpenFileName(self, 
+            "选择打开位置","./",
+            "All Files (*);;Text Files (*.html)")[0]
+    print(file_url)
+    with open(file_url, mode='r', encoding='utf-8') as file_obj:
+        self.set_html(file_obj.read())
+```
 
 ## 帮助我们改进
 显然这是一个刚刚入门pyqt的小菜鸟写的程序，所以如果您有任何好的建议都可以提交issues或PR😊
