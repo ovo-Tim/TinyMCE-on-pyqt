@@ -9,8 +9,9 @@
 - ✅ 由Python控制保存位置
 - ✅ Python端控制TinyMCE配置
 - ✅ 打开html文件
+- ✅ 打包成Python库，并发布到PyPi [在这里](https://pypi.org/project/TinyMCE-on-pyqt/)
 ### 待实现
-- ❎ 打包成Python库，并发布到PyPi
+
 
 ## 快速上手
 可以查看 [例子](example.py) ,比较简单方便上手

@@ -1,2 +1,6 @@
 __pycache__
 test.py
+__init__.py
+setup.py
+dist
+TinyMCE_on_pyqt.egg-info
