@@ -12,11 +12,13 @@ import threading
 
 logging.basicConfig(level=logging.DEBUG) #设置日志等级
 
+DIR = os.path.dirname(__file__)
+
 class TinyMCE_on_PyQt_window(QWidget):
     def __init__(self):
         super(TinyMCE_on_PyQt_window, self).__init__()
 
-        self.url = QFileInfo("./main.html").absoluteFilePath()
+        self.url = QFileInfo(DIR + "/main.html").absoluteFilePath()
         self.layout = QVBoxLayout() 
         self.TinyMCE_config=json.dumps({ #转为json方便与JS交互
             'selector': '#TinyMCE',
@@ -31,7 +33,10 @@ class TinyMCE_on_PyQt_window(QWidget):
     def init(self):
         # 创建浏览器控件
         self.browser = QWebEngineView()
-        self.browser.load(QUrl("file://"+self.url))
+        if sys.platform == "win32" or sys.platform == "win64":
+            self.browser.load(QUrl(self.url)) # Windows下特殊情况
+        else:
+            self.browser.load(QUrl("file://"+self.url))
 
         # 新建QWebChannel
         self.channel = QWebChannel()
