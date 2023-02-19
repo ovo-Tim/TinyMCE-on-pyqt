@@ -6,3 +6,4 @@ dist
 TinyMCE_on_pyqt.egg-info
 build
 打包
+MANIFEST.in

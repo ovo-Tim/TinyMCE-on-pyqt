@@ -20,7 +20,7 @@ class TinyMCE_on_PyQt_window(QWidget):
 
         self.url = QFileInfo(DIR + "/main.html").absoluteFilePath()
         self.layout = QVBoxLayout() 
-        self.TinyMCE_config=json.dumps({ #转为json方便与JS交互
+        self.TinyMCE_config = json.dumps({ #转为json方便与JS交互
             'selector': '#TinyMCE',
             'language': 'zh_CN',
             'height': 'calc(100vh)',
@@ -28,7 +28,9 @@ class TinyMCE_on_PyQt_window(QWidget):
             'toolbar': ['aligncenter | alignjustify | alignleft | alignnone | alignright | blockquote | backcolor | blocks | bold | copy | cut | fontfamily | fontsize | forecolor | h1 | h2 | h3 | h4 | h5 | h6 | newdocument | outdent | paste | pastetext | print | redo | remove | removeformat | selectall | strikethrough | styles | subscript | superscript | underline | undo | visualaid | code | restoredraft | bullist | anchor | link | charmap | emoticons | insertdatetime | media | preview | searchreplace | table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | template | wordcount']
         })
 
-        self.refresh_state=True #TinyMCE文本刷新状态，True代表刷新完成内容可用，False代表正在等待JS回调
+        self.refresh_state = True #TinyMCE文本刷新状态，True代表刷新完成内容可用，False代表正在等待JS回调
+
+        self.init_finished = False 
 
     def init(self):
         # 创建浏览器控件
@@ -51,6 +53,7 @@ class TinyMCE_on_PyQt_window(QWidget):
     def init_TinyMCE(self):
         #初始化TinyMCE(调用JS)
         self.browser.page().runJavaScript("init_editor('%s');" % self.TinyMCE_config)
+        self.init_finished = True
 
     # 刷新TinyMCE编辑器的内容
     def __call_back(self,result):
